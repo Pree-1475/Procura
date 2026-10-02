@@ -126,7 +126,11 @@ export default async function Home() {
           }}>
             How it works
           </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+          <div style={{ 
+            display: "grid", 
+            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", 
+            gap: "1rem" 
+          }}>
             {[
               { n: '1', t: 'Submit requirements' },
               { n: '2', t: 'Get a call back from us' },
@@ -134,9 +138,17 @@ export default async function Home() {
               { n: '4', t: 'Procurement management' },
               { n: '5', t: 'Delivery' }
             ].map(s => (
-              <div key={s.n} style={{ display: "flex", gap: "1rem", alignItems: "center", padding: "0.75rem 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                <span style={{ fontSize: "20px", fontWeight: 600, color: "var(--soft-blue-grey)", opacity: 0.9 }}>{s.n}</span>
-                <span style={{ fontSize: "16px", fontWeight: 500, color: "var(--pure-white)" }}>{s.t}</span>
+              <div key={s.n} style={{ 
+                display: "flex", 
+                flexDirection: "column", 
+                gap: "0.75rem", 
+                padding: "1.5rem", 
+                backgroundColor: "rgba(255,255,255,0.02)", 
+                borderRadius: "8px",
+                border: "1px solid rgba(255,255,255,0.05)"
+              }}>
+                <span style={{ fontSize: "24px", fontWeight: 600, color: "var(--soft-blue-grey)", opacity: 0.6 }}>{s.n}</span>
+                <span style={{ fontSize: "15px", fontWeight: 500, color: "var(--pure-white)", lineHeight: 1.4 }}>{s.t}</span>
               </div>
             ))}
           </div>

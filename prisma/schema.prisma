@@ -1,0 +1,46 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Requirement {
+  id              String   @id @default(cuid())
+  referenceId     String   @unique
+  title           String
+  description     String
+  status          String   @default("Submitted")
+  profName        String
+  collegeEmail    String
+  department      String
+  phoneNumber     String
+  requiredDate    DateTime
+  urgency         String
+  internalNotes   String?
+  visibility      String   @default("private")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  attachments     Attachment[]
+}
+
+model Attachment {
+  id            String      @id @default(cuid())
+  filename      String
+  originalName  String
+  mimeType      String
+  size          Int
+  requirementId String
+  requirement   Requirement @relation(fields: [requirementId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+}

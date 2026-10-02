@@ -402,3 +402,5 @@ button, input, textarea, select { font: inherit; }
     align-items: flex-start;
   }
 }
+. d e s k t o p - o n l y   {   d i s p l a y :   n o n e ;   }   @ m e d i a   ( m i n - w i d t h :   7 6 8 p x )   {   . d e s k t o p - o n l y   {   d i s p l a y :   b l o c k ;   }   }  
+ 

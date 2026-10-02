@@ -132,16 +132,16 @@ export default async function Home() {
             gap: "1rem" 
           }}>
             {[
-              { n: '1', t: 'Submit requirements' },
-              { n: '2', t: 'Get a call back from us' },
-              { n: '3', t: 'Review & sourcing' },
-              { n: '4', t: 'Procurement management' },
-              { n: '5', t: 'Delivery' }
+              { n: '1', t: 'Submit requirements', d: 'Tell us exactly what your lab needs.' },
+              { n: '2', t: 'Get a call back from us', d: 'We confirm details and timelines.' },
+              { n: '3', t: 'Review & sourcing', d: 'We find the best vendors globally.' },
+              { n: '4', t: 'Procurement management', d: 'We handle all the paperwork.' },
+              { n: '5', t: 'Delivery', d: 'Direct to your lab on time.' }
             ].map(s => (
               <div key={s.n} style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: "0.75rem", 
+                gap: "0.5rem", 
                 padding: "1.5rem", 
                 backgroundColor: "rgba(255,255,255,0.02)", 
                 borderRadius: "8px",
@@ -149,6 +149,7 @@ export default async function Home() {
               }}>
                 <span style={{ fontSize: "24px", fontWeight: 600, color: "var(--soft-blue-grey)", opacity: 0.6 }}>{s.n}</span>
                 <span style={{ fontSize: "15px", fontWeight: 500, color: "var(--pure-white)", lineHeight: 1.4 }}>{s.t}</span>
+                <span className="desktop-only" style={{ fontSize: "13px", color: "var(--muted-foreground)", lineHeight: 1.4 }}>{s.d}</span>
               </div>
             ))}
           </div>

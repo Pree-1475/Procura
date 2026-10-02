@@ -42,11 +42,11 @@ export default function SubmitPage() {
     return (
       <div className="bg-white" style={{ minHeight: "100%", flex: 1 }}>
         <div className="container animate-fade-in section-padding" style={{ maxWidth: "600px", textAlign: "center" }}>
-          
+
           <div style={{ width: "48px", height: "48px", borderRadius: "50%", backgroundColor: "var(--deep-ink)", color: "var(--pure-white)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 2rem" }}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </div>
-          
+
           <span className="eyebrow">SUBMISSION COMPLETE</span>
           <h1 className="large-statement" style={{ marginBottom: "1.5rem", fontSize: "2.5rem" }}>
             Requirement Logged.
@@ -54,7 +54,7 @@ export default function SubmitPage() {
           <p className="body-text" style={{ marginBottom: "4rem" }}>
             Your request has been received and is now moving into the review stage.
           </p>
-          
+
           <div style={{ padding: "3rem", border: "1px solid var(--border-color)", marginBottom: "3rem", position: "relative" }}>
             <div style={{ position: "absolute", top: "-10px", left: "2rem", backgroundColor: "var(--pure-white)", padding: "0 10px" }}>
               <span className="metadata">REFERENCE ID</span>
@@ -63,7 +63,7 @@ export default function SubmitPage() {
               {successId}
             </p>
           </div>
-          
+
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
             <Link href={`/track?id=${successId}`} className="btn btn-primary">
               Track Request Status &rarr;
@@ -80,7 +80,7 @@ export default function SubmitPage() {
   return (
     <div className="bg-ivory" style={{ minHeight: "100%", flex: 1, padding: "4rem 0" }}>
       <div className="container animate-fade-in" style={{ maxWidth: "800px" }}>
-        
+
         <header style={{ marginBottom: "4rem" }}>
           <h1 style={{ fontSize: "clamp(40px, 4vw, 56px)", fontWeight: 600, color: "var(--deep-ink)", marginBottom: "1rem", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             Submit a Requirement
@@ -98,8 +98,8 @@ export default function SubmitPage() {
 
         <div className="card" style={{ padding: "3rem", borderRadius: "2px", boxShadow: "0 10px 30px -10px rgba(0,0,0,0.05)" }}>
           <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+
+            <div className="form-grid">
               <div>
                 <label htmlFor="profName" className="label">Professor Name</label>
                 <input type="text" id="profName" name="profName" className="input" required placeholder="Dr. Jane Doe" />
@@ -111,7 +111,7 @@ export default function SubmitPage() {
               </div>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+            <div className="form-grid">
               <div>
                 <label htmlFor="department" className="label">Department</label>
                 <input type="text" id="department" name="department" className="input" required placeholder="Computer Science" />
@@ -119,7 +119,7 @@ export default function SubmitPage() {
 
               <div>
                 <label htmlFor="phoneNumber" className="label">Phone Number</label>
-                <input type="tel" id="phoneNumber" name="phoneNumber" className="input" required placeholder="+1 (555) 123-4567" />
+                <input type="tel" id="phoneNumber" name="phoneNumber" className="input" required placeholder="+91 1234567890" />
               </div>
             </div>
 
@@ -130,18 +130,31 @@ export default function SubmitPage() {
 
             <div>
               <label htmlFor="description" className="label">Detailed Specification</label>
-              <textarea 
-                id="description" 
-                name="description" 
-                className="input" 
-                required 
+              <textarea
+                id="description"
+                name="description"
+                className="input"
+                required
                 rows={6}
                 style={{ height: "auto", resize: "vertical", padding: "1rem" }}
                 placeholder="Provide precise specifications, preferred vendors, and intended research application."
               />
             </div>
-            
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+
+            <div>
+              <label htmlFor="attachment" className="label">Supporting Document (Optional)</label>
+              <input 
+                type="file" 
+                id="attachment" 
+                name="attachment" 
+                className="input" 
+                accept="image/*,.pdf" 
+                style={{ padding: "0.8rem", backgroundColor: "var(--pure-white)" }} 
+              />
+              <p style={{ fontSize: "12px", color: "var(--slate)", marginTop: "0.5rem" }}>Upload a reference image or PDF document.</p>
+            </div>
+
+            <div className="form-grid">
               <div>
                 <label htmlFor="requiredDate" className="label">Required By Date</label>
                 <input type="date" id="requiredDate" name="requiredDate" className="input" required />
@@ -159,9 +172,9 @@ export default function SubmitPage() {
             </div>
 
             <div style={{ paddingTop: "1rem", borderTop: "1px solid var(--border-color)", marginTop: "1rem", display: "flex", justifyContent: "flex-end" }}>
-              <button 
-                type="submit" 
-                className="btn btn-primary" 
+              <button
+                type="submit"
+                className="btn btn-primary"
                 disabled={isSubmitting}
                 style={{ padding: "0 3rem" }}
               >

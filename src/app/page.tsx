@@ -88,37 +88,55 @@ export default async function Home() {
             fontWeight: 600, lineHeight: 1.12, letterSpacing: "-0.02em",
             color: "var(--deep-ink)", maxWidth: "780px", marginBottom: "2.5rem"
           }}>
-            Researchers should be spending time on research — not chasing suppliers, specifications, and logistics.
+            Focus on research, not procurement.
           </h2>
-          <p style={{ fontSize: "16px", color: "var(--slate)", lineHeight: 1.6, maxWidth: "640px" }}>
-            Procura sits between your research needs and the complexity of procurement. You tell us what you need — we handle suppliers, quotations, and coordination.
-          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2rem", marginTop: "3rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--deep-ink)", fontWeight: 600, fontSize: "18px" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Focus on Research
+              </div>
+              <p style={{ fontSize: "15px", color: "var(--slate)", lineHeight: 1.5 }}>Spend your time on what matters. We'll handle the paperwork and logistics.</p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--deep-ink)", fontWeight: 600, fontSize: "18px" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Streamlined Sourcing
+              </div>
+              <p style={{ fontSize: "15px", color: "var(--slate)", lineHeight: 1.5 }}>You tell us what you need — we chase down the suppliers and quotations.</p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--deep-ink)", fontWeight: 600, fontSize: "18px" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Total Coordination
+              </div>
+              <p style={{ fontSize: "15px", color: "var(--slate)", lineHeight: 1.5 }}>From exact specifications to final delivery, everything is coordinated for you.</p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* HOW IT WORKS */}
-      <section id="how-it-works" className="bg-ink" style={{ padding: "4rem 0 5rem" }}>
+      <section id="how-it-works" className="bg-ink" style={{ padding: "2.5rem 0" }}>
         <div className="container">
           <h2 style={{
-            fontSize: "clamp(28px, 3vw, 38px)",
+            fontSize: "clamp(24px, 3vw, 32px)",
             fontWeight: 600, color: "var(--pure-white)",
-            marginBottom: "3rem", maxWidth: "500px",
-            lineHeight: 1.15, letterSpacing: "-0.02em"
+            marginBottom: "1.5rem"
           }}>
-            A requirement moves through five stages.
+            How it works
           </h2>
-          <div className="steps-grid">
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             {[
-              { n: '01', t: 'Submit', d: 'Tell us what you need.' },
-              { n: '02', t: 'Review', d: 'We review the requirement.' },
-              { n: '03', t: 'Source', d: 'We work through sourcing.' },
-              { n: '04', t: 'Procure', d: 'We coordinate procurement.' },
-              { n: '05', t: 'Deliver', d: 'Delivered to you.' }
+              { n: '1', t: 'Submit requirements' },
+              { n: '2', t: 'Get a call back from us' },
+              { n: '3', t: 'Review & sourcing' },
+              { n: '4', t: 'Procurement management' },
+              { n: '5', t: 'Delivery' }
             ].map(s => (
-              <div key={s.n} className="step-item">
-                <div className="step-num">{s.n}</div>
-                <h3 style={{ fontSize: "16px", fontWeight: 500, marginBottom: "0.25rem", color: "var(--pure-white)" }}>{s.t}</h3>
-                <p style={{ fontSize: "14px", color: "var(--soft-blue-grey)", lineHeight: 1.45, opacity: 0.7 }}>{s.d}</p>
+              <div key={s.n} style={{ display: "flex", gap: "1rem", alignItems: "center", padding: "0.75rem 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <span style={{ fontSize: "20px", fontWeight: 600, color: "var(--soft-blue-grey)", opacity: 0.9 }}>{s.n}</span>
+                <span style={{ fontSize: "16px", fontWeight: 500, color: "var(--pure-white)" }}>{s.t}</span>
               </div>
             ))}
           </div>
@@ -185,34 +203,33 @@ export default async function Home() {
               The people behind Procura
             </p>
             <div className="founders-grid">
-              <div>
-                <h3 style={{ fontSize: "17px", fontWeight: 600, color: "var(--deep-ink)", marginBottom: "0.25rem" }}>Dr. Manjesh Kumar</h3>
-                <p style={{ fontSize: "14px", color: "var(--slate)" }}>Faculty Member, SRM University-AP</p>
+              <div className="founder-card">
+                <h3 style={{ fontSize: "17px", fontWeight: 600, color: "var(--deep-ink)", marginBottom: "0.5rem" }}>Dr. Manjesh Kumar</h3>
+                <p style={{ fontSize: "14px", color: "var(--slate)", marginBottom: "0.5rem", fontWeight: 500 }}>Asst. Professor, SRM University-AP</p>
+                <ul style={{ fontSize: "14px", color: "var(--slate)", lineHeight: 1.5, paddingLeft: "1.25rem", margin: 0 }}>
+                  <li>Ph.D. from IIT Guwahati</li>
+                  <li>Recipient of University Outstanding Faculty Award</li>
+                  <li>Expertise in Advanced & Sustainable Manufacturing</li>
+                  <li>Leading sponsored research for High-Performance Space Hardware</li>
+                </ul>
               </div>
-              <div>
-                <h3 style={{ fontSize: "17px", fontWeight: 600, color: "var(--deep-ink)", marginBottom: "0.25rem" }}>Harsha Kondaveeti</h3>
-                <p style={{ fontSize: "14px", color: "var(--slate)", fontStyle: "italic" }}>Profile details will be added.</p>
+              <div className="founder-card">
+                <h3 style={{ fontSize: "17px", fontWeight: 600, color: "var(--deep-ink)", marginBottom: "0.5rem" }}>Harsha Kondaveeti</h3>
+                <ul style={{ fontSize: "14px", color: "var(--slate)", lineHeight: 1.5, paddingLeft: "1.25rem", margin: 0 }}>
+                  <li>Founder and CEO of Volta</li>
+                  <li>Head Researcher of Hydrogen Storage at Project Volta</li>
+                  <li>Internship at NUS Singapore</li>
+                  <li>2x Internships at DRDO</li>
+                  <li>2x Gold Medalist of Research Day at SRMAP</li>
+                  <li>4x International Conferences</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-muted-blue" style={{ padding: "4rem 0" }}>
-        <div className="container">
-          <h2 style={{
-            fontSize: "clamp(24px, 3vw, 36px)",
-            fontWeight: 600, color: "var(--pure-white)",
-            marginBottom: "1.25rem", lineHeight: 1.15, letterSpacing: "-0.02em"
-          }}>
-            Have a research requirement?
-          </h2>
-          <Link href="/submit" className="btn btn-primary" style={{ backgroundColor: "var(--pure-white)", color: "var(--deep-ink)" }}>
-            Submit a Requirement →
-          </Link>
-        </div>
-      </section>
+
 
       {/* TRACK */}
       <section className="bg-ink" style={{ padding: "3.5rem 0" }}>

@@ -5,14 +5,16 @@ import Link from 'next/link';
 import { ArrowLeft, Check, Clock, Package, FileSearch, User, Mail, Calendar, FileText, Lock, Globe } from 'lucide-react';
 import { revalidatePath } from 'next/cache';
 
-export default async function RequirementDetails({ params }: { params: { id: string } }) {
+export default async function RequirementDetails({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  
   const session = await getSession();
   if (!session) {
     redirect('/admin/login');
   }
 
   const requirement = await prisma.requirement.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: { attachments: true }
   });
 
@@ -32,30 +34,30 @@ export default async function RequirementDetails({ params }: { params: { id: str
     'use server';
     const newStatus = formData.get('status') as string;
     await prisma.requirement.update({
-      where: { id: params.id },
+      where: { id },
       data: { status: newStatus }
     });
-    revalidatePath(`/admin/requirement/${params.id}`);
+    revalidatePath(`/admin/requirement/${id}`);
   }
 
   async function updateNotes(formData: FormData) {
     'use server';
     const notes = formData.get('notes') as string;
     await prisma.requirement.update({
-      where: { id: params.id },
+      where: { id },
       data: { internalNotes: notes }
     });
-    revalidatePath(`/admin/requirement/${params.id}`);
+    revalidatePath(`/admin/requirement/${id}`);
   }
 
   async function updateVisibility(formData: FormData) {
     'use server';
     const visibility = formData.get('visibility') as string;
     await prisma.requirement.update({
-      where: { id: params.id },
+      where: { id },
       data: { visibility }
     });
-    revalidatePath(`/admin/requirement/${params.id}`);
+    revalidatePath(`/admin/requirement/${id}`);
   }
 
   return (
@@ -84,10 +86,11 @@ export default async function RequirementDetails({ params }: { params: { id: str
             {requirement.visibility === 'public' ? <Globe size={16} style={{ color: "#10b981" }} /> : <Lock size={16} style={{ color: "var(--muted-foreground)" }} />}
             Visibility:
           </span>
-          <select name="visibility" defaultValue={requirement.visibility} onChange={(e) => e.target.form?.requestSubmit()} style={{ fontSize: "0.875rem", border: "none", backgroundColor: "transparent", outline: "none", cursor: "pointer", fontWeight: 600 }}>
+          <select name="visibility" defaultValue={requirement.visibility} style={{ fontSize: "0.875rem", border: "none", backgroundColor: "transparent", outline: "none", cursor: "pointer", fontWeight: 600 }}>
             <option value="private">Private (Default)</option>
             <option value="public">Public (Showcase)</option>
           </select>
+          <button type="submit" style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem", backgroundColor: "var(--primary)", color: "white", border: "none", borderRadius: "3px", cursor: "pointer" }}>Save</button>
         </form>
       </div>
 

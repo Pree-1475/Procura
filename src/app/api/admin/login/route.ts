@@ -16,25 +16,30 @@ export async function POST(request: Request) {
       );
     }
 
+    console.log("Login attempt for email:", email);
     const admin = await prisma.admin.findUnique({
       where: { email },
     });
 
     if (!admin) {
+      console.log("Admin not found for email:", email);
       return NextResponse.json(
         { error: 'Invalid credentials' },
         { status: 401 }
       );
     }
 
+    console.log("Admin found. Checking password...");
     const isPasswordValid = await compare(password, admin.password);
 
     if (!isPasswordValid) {
+      console.log("Password comparison failed for:", email);
       return NextResponse.json(
         { error: 'Invalid credentials' },
         { status: 401 }
       );
     }
+    console.log("Password is valid. Setting session...");
 
     await setSession(admin.id);
 

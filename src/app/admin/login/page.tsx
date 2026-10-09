@@ -28,8 +28,7 @@ export default function AdminLogin() {
         throw new Error(data.error || 'Login failed');
       }
 
-      router.push('/admin');
-      router.refresh();
+      window.location.href = '/admin';
     } catch (err: any) {
       setError(err.message);
       setIsSubmitting(false);
